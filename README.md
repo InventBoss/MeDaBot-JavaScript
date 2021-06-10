@@ -34,7 +34,7 @@ I created a console command for myself that includes these sub commands:
 
 Not only that but, I have given myself access to the `clearmessage` which allows me to purge a specified amount of messages (this command can be used by anyone with the manage messages permission).
 
-If you don't want one person to have access to these commands then don't invite the bot to my server.
+If you don't want one person to have access to these commands then don't invite the bot to your server.
 
 # MeDaBot Quickstart
 
