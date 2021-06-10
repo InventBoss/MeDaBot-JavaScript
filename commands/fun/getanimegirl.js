@@ -16,4 +16,6 @@ module.exports = {
   }
 }
 
-/* So, you may be wondering why this command exists. Well, I am not a weeb, one of my friends are. And I made this command  for them (and for a crappy hypixel skyblock reward). Now, this command was the biggest mistake of MeDaBot, simply because  of the random library I used actually displayed NSFW content, so I had to restrict it to DM's only. But my discord server members started having NSFW speedruns on the bot. And here we are. */
+/* 
+So, you may be wondering why this command exists. Well, I am not a weeb, one of my friends are. And I made this command  for them (and for a crappy hypixel skyblock reward). Now, this command was the biggest mistake of MeDaBot, simply because  of the random library I used actually displayed NSFW content, so I had to restrict it to DM's only. But my discord server members started having NSFW speedruns on the bot. And here we are.
+*/
