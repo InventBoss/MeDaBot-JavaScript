@@ -6,7 +6,7 @@ I'll tell you how to invite him later, but first lemme tell you about him.
 
 **MeDaBot** is a chatbot that I created for fun, and to expand a few of my very little coding skills. **MeDaBot** started in a single python file, which you probably know is a terrible idea for any program, but it was a start and I expanded from there.
 
-Soon after I worked some basic features and got better at coding. I made **MeDaBot** multi-file, but still in python which made the bot INCREDIBLY slow.
+Soon after I worked on some basic features and got better at coding. I made **MeDaBot** multi-file, but still in python which made the bot INCREDIBLY slow.
 I worked on **MeDaBot** in python for quite a while. But then, the speed became unbearable, so I switched to javascript. Now, I had 0 experience with javascript, and I had just jumped in without watching a single javascript tutorial. I only had replit, a crappy youtube tutorial about discord.py, and confidence.
 
 I worked on the bot for a very long time in javascript and still do. I had put a bunch of features into him, and I created this github page because why not.
