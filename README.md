@@ -13,7 +13,7 @@ I worked on the bot for a very long time in javascript and still do. I had put a
 
 # MeDaBot Warnings
 
-Now this bot is pretty good by my standards but is has a few red flags:
+Now this bot is pretty good by my standards but it has a few red flags:
 
 ### 1. This bot has 0 filter on anything that comes into it
 
