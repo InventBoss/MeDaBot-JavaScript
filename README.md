@@ -15,14 +15,14 @@ I worked on the bot for a very long time in javascript and still do. I had put a
 
 Now this bot is pretty good by my standards but is has a few red flags:
 
-**1. This bot has 0 filter on anything that comes into it**
+### 1. This bot has 0 filter on anything that comes into it
 
 That means the `wiki` command, the `urban` command, the `getanimegirl` command, and a few other ones.
 If you decided to make a discord for your christian minecraft server and want a fun bot for it, this one is not for you.
 
 I am planning on adding a basic filter to the text based ones like `wiki` and `urban`, but image based ones have free reign.
 
-**2. I have given myself a lot of power with MeDaBot**
+### 2. I have given myself a lot of power with MeDaBot
 
 I created a console command for myself that includes these sub commands:
 
@@ -35,3 +35,15 @@ I created a console command for myself that includes these sub commands:
 Not only that but, I have given myself access to the `clearmessage` which allows me to purge a specified amount of messages (this command can be used by anyone with the manage messages permission).
 
 If you don't want one person to have access to these commands then don't invite the bot to my server.
+
+# MeDaBot Quickstart
+
+To invite the bot to your server, check that you have the manage server permission then click [here](https://discord.com/api/oauth2/authorize?client_id=763313827944202250&permissions=1073866944&scope=bot).
+
+When you click on the link it will send you to a page where you can add the bot to any server you have the manage server permission on.
+
+I have customized the settings so that it should only give **MeDaBot** the required roles. However, if you're not happy with the selected roles, you can change them via. inviting **MeDaBot** to your server then modifying the **MeDaBot** role permissions. If you do not know how to do that then please google it [here](https://www.google.com/).
+
+Once you have the bot on your server you can open up the command guide via `>list` or `>help`. I am planning on making custom prefixes in the future but for now you're gonna have to stick with `>`.
+
+Now that should be about it for now. I am planning on adding more stuff to this file, but for now you're stuck with this.
