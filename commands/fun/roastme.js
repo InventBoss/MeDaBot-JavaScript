@@ -5,7 +5,7 @@ module.exports = {
   name: "roastme",
   execute(message) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("**LOADING SADNESS**")
+        .setDescription("**LOADING SADNESS**")
         .setColor("#fc4e03")
 
     message.channel.send(embed).then(m => {

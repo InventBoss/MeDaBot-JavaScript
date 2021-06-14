@@ -6,7 +6,7 @@ module.exports = {
   aliases: ["cat"],
   execute(message) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("**LOADING CAT**")
+        .setDescription("**LOADING CAT**")
         .setColor("#ffbafd")
 
     message.channel.send(embed).then(m => {
