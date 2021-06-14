@@ -39,6 +39,7 @@ module.exports = {
     } else if (args[0] === "search") {
       embed.addField("Urban", "> Finds the definition on the urban dictionary. (Answers are not always serious)")
       embed.addField("Wiki", "> Search for pages on wikipedia.")
+      embed.addField("Search", "> Search for stuff on google.")
 
     } else if (args[0] === "moderation") {
       embed.addField("Clearmessage", "> Clear a specified amount of messages, default is 10.")

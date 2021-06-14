@@ -8,9 +8,7 @@ module.exports = {
         .setAuthor("Loading Cat")
         .setColor("#ffbafd")
 
-    message.channel.Typing()
     message.channel.send(embed).then(m => {
-      message.channel.Typing()
       
       fetch("https://aws.random.cat/meow").then(response => response.json()).then(json => {
         result = json.file

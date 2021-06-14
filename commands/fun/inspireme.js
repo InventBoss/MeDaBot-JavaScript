@@ -5,12 +5,10 @@ module.exports = {
   name: "inspireme",
   execute(message) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("Loading Inspirational Quote")
+        .setAuthor("LOADING QUOTE")
         .setColor("#8945ff")
 
-    message.channel.Typing()
     message.channel.send(embed).then(m => {
-      message.channel.Typing()
       
       fetch("https://zenquotes.io/api/random").then(response => response.json()).then(json => {
         const embed = new Discord.MessageEmbed()

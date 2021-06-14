@@ -8,9 +8,7 @@ module.exports = {
         .setAuthor("Loading Doggo")
         .setColor("#34c4e0")
 
-    message.channel.Typing()
     message.channel.send(embed).then(m => {
-      message.channel.Typing()
       
       fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json()).then(json => {
         result = json.message
