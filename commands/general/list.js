@@ -9,11 +9,11 @@ module.exports = {
       .setTitle("**Command Guide :book:**")
 
     if (!args.length) {
-      embed.addField("General Commands", "> `>list general` to see all the general commands")
-      embed.addField("Fun Commands", "> `>list fun` to play with some unique commands I made")
-      embed.addField("Search Commands", "> `>list search` to starting searching things... within discord")
-      embed.addField("Reddit Commands", "> `>list reddit` to see what discord and reddit can do together")
-      embed.addField("Moderation Commands", "> `>list moderation` to see some useful tools for you moderators")
+      embed.addField("General Commands", "> `>list general` to see all the general commands.")
+      embed.addField("Fun Commands", "> `>list fun` to play with some unique commands I made.")
+      embed.addField("Search Commands", "> `>list search` to starting searching things... within discord.")
+      embed.addField("Reddit Commands", "> `>list reddit` to see what discord and reddit can do together.")
+      embed.addField("Server Commands", "> `>list server` to see some useful tools for your moderators and admins.")
       
     } else if (args[0] === "general") {
       embed.addField("Ping", "> Shows you your ping...\n pretty self explanatory.")
@@ -41,8 +41,9 @@ module.exports = {
       embed.addField("Wiki", "> Search for pages on wikipedia.")
       embed.addField("Search", "> Search for stuff on google.")
 
-    } else if (args[0] === "moderation") {
+    } else if (args[0] === "server") {
       embed.addField("Clearmessage", "> Clear a specified amount of messages, default is 10.")
+      embed.addField("Addemoji", "> Adds an emoji to the server more quickly?")
 
     } else if (args[0] === "reddit") {
       embed.addField("Meme", "> I will get a random dank meme from r/memes.")

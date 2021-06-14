@@ -32,7 +32,7 @@ I created a console command for myself that includes these sub commands:
 * `uptime`: Allows me to view how long the bot has been up for.
 * `list/help`: Allows me to view all these sub commands I just listed.
 
-Not only that but, I have given myself access to the `clearmessage` which allows me to purge a specified amount of messages (this command can be used by anyone with the manage messages permission).
+Not only that but, I have given myself access to all the server commands as well.
 
 If you don't want one person to have access to these commands then don't invite the bot to your server.
 
