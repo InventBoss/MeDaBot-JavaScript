@@ -8,7 +8,7 @@ module.exports = {
   name: "urban",
   execute(message, args, text) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("Loading Description")
+        .setAuthor("**LOADING DESCRIPTION**")
         .setColor("#002a61")
 
     message.channel.send(embed).then(m => {

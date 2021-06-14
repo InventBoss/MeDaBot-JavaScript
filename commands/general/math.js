@@ -21,7 +21,12 @@ module.exports = {
       }
     } catch (error) {
       console.log(error)
-      message.channel.send(`There was an error while trying to calculate \`${input}\``)
+      const embed = new Discord.MessageEmbed()
+        .setColor("#9c2c00")
+        .setTitle("**Math :pencil2:**")
+        .setDescription(`An error occured while calculating \`${input}\``)
+
+      message.channel.send(embed)
       return
     }
   }

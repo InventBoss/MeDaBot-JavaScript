@@ -5,7 +5,7 @@ module.exports = {
   name: "inspireme",
   execute(message) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("LOADING QUOTE")
+        .setAuthor("**LOADING QUOTE**")
         .setColor("#8945ff")
 
     message.channel.send(embed).then(m => {

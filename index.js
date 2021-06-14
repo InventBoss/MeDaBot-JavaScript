@@ -119,7 +119,7 @@ client.on("message", message => {
     console.log(`<${message.author.tag}> executed ${commandName} in <${message.guild}>`)
 	} catch (error) {
 		console.log("<Error>\n" + error)
-		message.reply("there was an error trying to execute \`>${commandName}\`")
+		message.reply(`there was an error trying to execute \`>${commandName}\``)
 	}
 })
 

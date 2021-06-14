@@ -9,7 +9,7 @@ module.exports = {
   aliases: ["wikipedia"],
   execute(message, args,  text) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("Loading Page")
+        .setAuthor("**LOADING WIKI**")
         .setColor("#f7f7f7")
 
     message.channel.send(embed).then(m => {

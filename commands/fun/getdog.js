@@ -3,9 +3,10 @@ const fetch = require('node-fetch');
 
 module.exports = {
   name: "getdog",
+  aliases: ["dog"],
   execute(message) {
     const embed = new Discord.MessageEmbed()
-        .setAuthor("Loading Doggo")
+        .setAuthor("**LOADING DOGGO**")
         .setColor("#34c4e0")
 
     message.channel.send(embed).then(m => {
@@ -13,7 +14,7 @@ module.exports = {
       fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json()).then(json => {
         result = json.message
         const embed = new Discord.MessageEmbed()
-          .setFooter("Images supplied by: dog.ceo")
+          .setAuthor("Here's your good boi", "https://cdn.discordapp.com/avatars/763313827944202250/78dfd2ed2cfd80fb725aa10e5ddb053e.png?size=128")
           .setImage(result)
           .setColor("#34c4e0")
           
