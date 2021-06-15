@@ -32,7 +32,7 @@ I created a console command for myself that includes these sub commands:
 * `uptime`: Allows me to view how long the bot has been up for.
 * `list/help`: Allows me to view all these sub commands I just listed.
 
-Not only that but, I have given myself access to all the server commands as well.
+Not only that, but I have given myself access to all the server commands as well.
 
 If you don't want one person to have access to these commands then don't invite the bot to your server.
 
@@ -45,5 +45,10 @@ When you click on the link it will send you to a page where you can add the bot 
 I have customized the settings so that it should only give **MeDaBot** the required roles. However, if you're not happy with the selected roles, you can change them via. inviting **MeDaBot** to your server then modifying the **MeDaBot** role permissions. If you do not know how to do that then please google it [here](https://www.google.com/).
 
 Once you have the bot on your server you can open up the command guide via `>list` or `>help`. I am planning on making custom prefixes in the future but for now you're gonna have to stick with `>`.
+
+# MeDaBot Support
+
+If you're having a problem with **MeDaBot**, please go to issues to report it there. If you can't do that please join [this](https://discord.gg/j9dc9AZutC) server. 
+
 
 Now that should be about it for now. I am planning on adding more stuff to this file, but for now you're stuck with this.
