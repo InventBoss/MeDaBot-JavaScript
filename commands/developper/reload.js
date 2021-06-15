@@ -13,7 +13,7 @@ module.exports = {
       return message.channel.send(`Could not find \`>${commandName}\``)
       }
 
-      const commandFolders = fs.readdirSync('./commands')
+      const commandFolders = fs.readdirSync("./commands")
       const folderName = commandFolders.find(folder => fs.readdirSync(`./commands/${folder}`).includes(`${command.name}.js`))
 
       delete require.cache[require.resolve(`../${folderName}/${command.name}.js`)]

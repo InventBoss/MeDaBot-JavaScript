@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const fetch = require('node-fetch');
+const Discord = require("discord.js")
+const fetch = require("node-fetch")
 
 const searchEngineId =  process.env["SEARCH_ENGINE_ID"]
 const apiKey =  process.env["API_KEY"]

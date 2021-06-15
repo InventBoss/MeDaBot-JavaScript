@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const snoowrap = require("snoowrap")
 
 const reddit = new snoowrap({
-    userAgent: 'Scraper',
+    userAgent: "Scraper",
     clientId: process.env["REDDIT_ID"],
     clientSecret: process.env["REDDIT_SECRET"],
     refreshToken: process.env["REDDIT_REFRESH_TOKEN"]
@@ -17,7 +17,7 @@ module.exports = {
     async function scrapeSubreddit() {
       const embed = new Discord.MessageEmbed()
           .setColor("#ff4301")
-          .setDescription(`**LOADING POST**`)
+          .setDescription("**LOADING POST**")
       message.channel.send(embed).then(async postMessage => {
         
         var post = await reddit.getSubmission(args[0])

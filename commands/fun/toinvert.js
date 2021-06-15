@@ -1,7 +1,7 @@
 const Jimp = require("jimp")
 const fs = require("fs")
 const path = require("path")
-const { promisify } = require('util')
+const { promisify } = require("util")
 
 const sleep = promisify(setTimeout)
 
