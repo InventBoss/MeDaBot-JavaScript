@@ -25,6 +25,7 @@ module.exports = {
       embed.addField("Serverinfo", "> Get info about the server you're in.")
       embed.addField("About", "> Wanna learn about me? Great! Type this command.")
       embed.addField("Tools", "> Wanna learn about what I used? Great! Type this command.")
+      embed.addField("Shortenurl", "> Shorten your long urls (eg. https://google.com/)")
 
     } else if (args[0] === "fun") {
       embed.addField("Getcat", "> Shows you a precious little angel.")

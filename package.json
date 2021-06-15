@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@replit/database": "^2.0.1",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10",
     "discord.js": "^12.5.3",
     "express": "^4.17.1",
     "image-scraper": "^0.2.1",
