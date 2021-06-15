@@ -1,6 +1,6 @@
 # MeDaBot Overview
 
-Hello, It seems you have found my Discord chatbot, **MeDaBot**.
+Hello, it seems you have found my Discord chatbot, **MeDaBot**.
 
 I'll tell you how to invite him later, but first lemme tell you about him.
 
