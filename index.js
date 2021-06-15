@@ -69,6 +69,9 @@ client.on("message", message => {
   } if (message.content === "summon the moth") {
     message.channel.send("https://cdn.discordapp.com/attachments/836752348260466688/846496652847611914/nzrsau2h.png")
 
+  } if (message.content.toLowerCase().includes("joe") && !message.author.bot) {
+    message.channel.send("Joe Mama")
+
   } if (message.content === "tonight on bottom gear") {
     async function getBottomGear() {
 
