@@ -43,6 +43,7 @@ To invite the bot to your server, check that you have the manage server permissi
 When you click on the link it will send you to a page where you can add the bot to any server you have the manage server permission on.
 
 I have customized the settings so that it should only give **MeDaBot** the required roles. However, if you're not happy with the selected roles, you can change them via. inviting **MeDaBot** to your server then modifying the **MeDaBot** role permissions. If you do not know how to do that then please google it [here](https://www.google.com/).
+If you're russian, yandex it [here](https://yandex.ru/)
 
 Once you have the bot on your server you can open up the command guide via `>list` or `>help`. I am planning on making custom prefixes in the future but for now you're gonna have to stick with `>`.
 
