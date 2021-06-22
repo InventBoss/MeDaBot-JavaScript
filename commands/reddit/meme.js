@@ -21,6 +21,13 @@ module.exports = {
       message.channel.send(embed).then(async memeMessage => {
 
         const post = await reddit.getSubreddit("memes").getRandomSubmission()
+        if (post.over_18) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#ff4301")
+            .setDescription("**SORRY THIS POST IS NSFW**")
+          postMessage.edit(embed)
+          return
+        }
 
         const embed = new Discord.MessageEmbed()
           .setColor("#ff4301")

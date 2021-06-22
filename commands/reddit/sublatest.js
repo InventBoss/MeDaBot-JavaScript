@@ -20,6 +20,13 @@ module.exports = {
       message.channel.send(embed).then(async postMessage => {
 
         const posts = await reddit.getSubreddit(text.replace(/ /g, "")).getNew({limit: 0})
+        if (post.over_18) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#ff4301")
+            .setDescription("**SORRY THIS POST IS NSFW**")
+          postMessage.edit(embed)
+          return
+        }
 
         posts.forEach((post) => {
           const embed = new Discord.MessageEmbed()

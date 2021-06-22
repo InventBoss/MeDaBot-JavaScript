@@ -22,6 +22,13 @@ module.exports = {
         var query = args.slice(1).join(" ")
 
         const posts = await reddit.getSubreddit(args[0]).search({query: query, time: "all", limit: 0, sort: "top"})
+        if (post.over_18) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#ff4301")
+            .setDescription("**SORRY THIS POST IS NSFW**")
+          postMessage.edit(embed)
+          return
+        }
 
         posts.forEach((post) => {
           const embed = new Discord.MessageEmbed()

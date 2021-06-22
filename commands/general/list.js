@@ -54,7 +54,7 @@ module.exports = {
       embed.addField("Subhot", "> I will get the hotest post from the specified subreddit.")
       embed.addField("Sublatest", "> I will get the latest post from the specified subreddit.")
       embed.addField("Subcontroversial", "> I will get the most controversial post of the day from the                      specified subreddit.")
-      embed.addField("Subsearch", "> I will search the specified subreddit for what you entered")
+      embed.addField("Subsearch", "> I will search the specified subreddit for what you entered.")
 
     } else {
       embed.addField("What Commands? :thinking:", "We don't know what commands you think exist. Read all the existant commands using `>list` or `>help`.")

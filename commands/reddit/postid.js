@@ -21,6 +21,13 @@ module.exports = {
       message.channel.send(embed).then(async postMessage => {
         
         var post = await reddit.getSubmission(args[0])
+        if (await post.over_18) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#ff4301")
+            .setDescription("**SORRY THIS POST IS NSFW**")
+          postMessage.edit(embed)
+          return
+        }
 
         var postTitle = `${await post.title}`
 
