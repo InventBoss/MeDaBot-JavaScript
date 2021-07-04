@@ -40,13 +40,7 @@ for (const file of commandFiles) {
 }
 
 client.on("ready", async () => {
-  client.user.setPresence({
-        status: "online",
-        activity: {
-            name: ">help to start",
-            type: "PLAYING"
-        }
-    })
+  client.user.setActivity("paint dry", { type: "WATCHING" })
 
   console.log(`Logged in as ${client.user.tag}`)
   console.log("-------------Log-------------")

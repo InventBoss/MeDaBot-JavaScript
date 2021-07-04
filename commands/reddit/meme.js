@@ -25,7 +25,7 @@ module.exports = {
           const embed = new Discord.MessageEmbed()
             .setColor("#ff4301")
             .setDescription("**SORRY THIS POST IS NSFW**")
-          postMessage.edit(embed)
+          memeMessage.edit(embed)
           return
         }
 

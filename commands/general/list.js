@@ -36,6 +36,7 @@ module.exports = {
       embed.addField("Toinvert", "> Turn any image you have into an alien artifact.")
       embed.addField("Getanimegirl", "> Fulfil a weebs dream with this. (DM only)")
       embed.addField("Inspireme", "> Get inspired... that's it.")
+      embed.addField("Trivia", "> Test your knowledge about useless things.")
     
     } else if (args[0] === "search") {
       embed.addField("Urban", "> Finds the definition on the urban dictionary. (Answers are not always serious)")
