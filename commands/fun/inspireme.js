@@ -14,9 +14,9 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
           .setDescription(`> ${json[0].q}\n\n - ${json[0].a}`)
           .setColor("#8945ff")
-          
+        
         m.edit(embed)
-      })    
+      })
     })
   }
 }

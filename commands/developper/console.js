@@ -15,7 +15,7 @@ module.exports = {
         message.channel.send(finalMessage)
         message.channel.stopTyping()
       })
-    
+
     } else if (args[0] === "remindaboutrewind") {
       var user = message.guild.members.cache.get(args[1])
       user.send("Hey there! Just a friendly reminder to dislike youtube rewind.\n\nI got the link right here for you:\n\nhttps://www.youtube.com/watch?v=YbJOTdZBX1g")

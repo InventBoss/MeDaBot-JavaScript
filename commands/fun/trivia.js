@@ -1,6 +1,5 @@
 const Discord = require("discord.js")
 const fetch = require("node-fetch")
-const jquery = require("jquery")
 
 const emojiArray = new Array("1️⃣", "2️⃣", "3️⃣", "4️⃣")
 
@@ -38,14 +37,11 @@ module.exports = {
         await m.react("4️⃣")
 
         result = json.results[0]
-        console.log(result)
 
         let optionsArray = new Array(result.incorrect_answers[0], result.incorrect_answers[1],
          result.incorrect_answers[2], result.correct_answer)
 
         optionsArray.sort()
-
-        console.log(optionsArray)
 
         const embed = new Discord.MessageEmbed()
           .setTitle("**Trivia** :question:")
@@ -57,19 +53,18 @@ module.exports = {
 
         const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" && user.id === message.author.id
 
-        m.awaitReactions(filter, { time: 10000 }).then(collected => {
-          // console.log(collected.get("1️⃣").emoji.name)
+        m.awaitReactions(filter, { time: 15000 }).then(collected => {
           if (collected.size === 0) {
             const embed = new Discord.MessageEmbed()
               .setTitle("**Trivia** :question:")
-              .setDescription(`**You ran out of time to answer the question.**`)
+              .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
               .setColor("#e1ff00")
 
             m.edit(embed)
           } if (collected.size > 1) {
             const embed = new Discord.MessageEmbed()
               .setTitle("**Trivia** :question:")
-              .setDescription(`**You chose too many answers.**`)
+              .setDescription(`**You chose too many answers.**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
               .setColor("#e1ff00")
 
             m.edit(embed)
