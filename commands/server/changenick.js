@@ -1,9 +1,3 @@
-/*     } else if (args[0] === "changenick") {
-      const chosenNick = args.slice(1).join(" ")
-      message.guild.me.setNickname(chosenNick)
-      message.channel.send(`Changed nick to \`${chosenNick}\``)
-*/
-
 const Discord = require("discord.js")
 
 module.exports = {

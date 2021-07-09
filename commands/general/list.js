@@ -46,6 +46,7 @@ module.exports = {
     } else if (args[0] === "server") {
       embed.addField("Clearmessage", "> Clear a specified amount of messages, default is 10.")
       embed.addField("Addemoji", "> Adds an emoji to the server more quickly?")
+      embed.addField("Changenick", "> Changes my nickname on the server.")
 
     } else if (args[0] === "reddit") {
       embed.addField("Meme", "> I will get a random dank meme from r/memes.")

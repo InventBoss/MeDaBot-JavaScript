@@ -21,7 +21,7 @@ const client = new Discord.Client()
 client.commands = new Discord.Collection()
 
 const dadBotTriggerWords = ["i\'m", "im", "I\'m", "Im", "I\'M", "IM", "i\'M", "iM"]
-const extension = [".jpg", ".png", ".svg", ".mp4", ".gif"];
+const extension = [".jpg", ".png", ".svg", ".mp4", ".gif"]
 
 const commandFolders = fs.readdirSync("./commands")
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
@@ -40,7 +40,7 @@ for (const file of commandFiles) {
 }
 
 client.on("ready", async () => {
-  client.user.setActivity("paint dry", { type: "WATCHING" })
+  client.user.setActivity("The little shits who shot Harambe.", { type: "WATCHING" })
 
   console.log(`Logged in as ${client.user.tag}`)
   console.log("-------------Log-------------")

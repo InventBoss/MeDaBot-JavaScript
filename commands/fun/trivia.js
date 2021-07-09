@@ -4,11 +4,11 @@ const fetch = require("node-fetch")
 const emojiArray = new Array("1️⃣", "2️⃣", "3️⃣", "4️⃣")
 
 const htmlUnescapes = {
-  '&amp;': '&',
-  '&lt;': '<',
-  '&gt;': '>',
-  '&quot;': '"',
-  '&#39;': "'"
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": "\"",
+  "&#39;": "'"
 }
 
 const reEscapedHtml = /&(?:amp|lt|gt|quot|#39);/g
