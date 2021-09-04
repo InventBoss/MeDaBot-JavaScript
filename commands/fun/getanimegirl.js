@@ -4,7 +4,7 @@ const randomanime = require("random-anime")
 module.exports = {
   name: "getanimegirl",
   execute(message) {
-    if (message.guild) return
+    if (message.guild) return message.channel.send("Do it in DM's weeb.")
 
     var bonkChance = Math.round(Math.random() * (25 - 1) + 1)
     if (bonkChance === 12) {

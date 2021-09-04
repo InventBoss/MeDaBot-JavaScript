@@ -21,10 +21,12 @@ module.exports = {
       user.send("Hey there! Just a friendly reminder to dislike youtube rewind.\n\nI got the link right here for you:\n\nhttps://www.youtube.com/watch?v=YbJOTdZBX1g")
     
     } else if (args[0] === "auditlog") {
-      message.guild.fetchAuditLogs({
-        limit: 1
-      }).then(async logs => {
-        await console.log(logs.entries)
+      message.guild.fetchAuditLogs({limit: 5}).then(async logs => {
+        
+        const entries = logs.entries.array()
+
+
+        await console.log(entries[0])
         
       })
 
