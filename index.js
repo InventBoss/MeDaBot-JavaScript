@@ -13,7 +13,7 @@ const reddit = new snoowrap({
   })
 
 async function startBot() {
-  const token = "ODMwMDkyNzM0OTE2MDY3Mzc5.YHBqGg.BB06OW_pH2-4nMNqPlqS4GX48FA" // process.env["TOKEN"] | This is replaced when testing
+  const token = process.env["TOKEN"] // process.env["TOKEN"] | This is replaced when testing
   client.login(token)
 }
 
