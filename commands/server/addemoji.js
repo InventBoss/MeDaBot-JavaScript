@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 module.exports = {
   name: "addemoji",
   execute(message, args) {
-    if (!message.guild) return
+    if (!message.guild) return message.channel.send("Sorry but I can only do this command in servers.")
 
     if (message.member.hasPermission("MANAGE_EMOJIS", { checkAdmin: true, checkOwner: true}) || message.author.id === 617816411750006794) {
       if (typeof args[0] === "undefined")  {

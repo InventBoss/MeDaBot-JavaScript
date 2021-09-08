@@ -3,6 +3,7 @@ const stayAlive = require("./stay_alive.js")
 const Discord = require("discord.js")
 const config = require("./config.json")
 const snoowrap = require("snoowrap")
+require('dotenv').config()
 
 const reddit = new snoowrap({
     userAgent: "Scraper",
@@ -12,7 +13,7 @@ const reddit = new snoowrap({
   })
 
 async function startBot() {
-  const token = process.env["TOKEN"]
+  const token = "ODMwMDkyNzM0OTE2MDY3Mzc5.YHBqGg.BB06OW_pH2-4nMNqPlqS4GX48FA" // process.env["TOKEN"] | This is replaced when testing
   client.login(token)
 }
 
@@ -63,9 +64,6 @@ client.on("message", message => {
   } if (message.content === "summon the moth") {
     message.channel.send("https://cdn.discordapp.com/attachments/836752348260466688/846496652847611914/nzrsau2h.png")
 
-  } if (message.content.toLowerCase().includes("joe") && !message.author.bot) {
-    message.channel.send("Joe Mama")
-
   } if (message.content === "tonight on bottom gear") {
     async function getBottomGear() {
 
@@ -106,8 +104,7 @@ client.on("message", message => {
     return
   }
 	
-  const command = client.commands.get(commandName)
-    || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
+  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
 
   if (!command) return
 

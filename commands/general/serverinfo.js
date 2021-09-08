@@ -4,6 +4,8 @@ module.exports = {
   name: "serverinfo",
   aliases: ["aboutserver"],
   execute(message) {
+    if (!message.guild) return message.channel.send("Sorry but I can only do this command in servers.")
+
     var guildName = message.guild
     var totalMembers = message.guild.memberCount
     var owner = message.guild.owner.user

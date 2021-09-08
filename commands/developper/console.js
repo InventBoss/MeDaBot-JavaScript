@@ -7,7 +7,7 @@ module.exports = {
     if (!message.author.id === "617816411750006794") return
 
     if (args[0] === "say" || args[0] === "speak") {
-      if (!message.guild) return
+      if (!message.guild) return message.channel.send("Sorry but I can only do this command in servers.")
 
       message.channel.bulkDelete(1).then(() => {
         var finalMessage = args.slice(1).join(" ")
