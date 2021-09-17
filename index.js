@@ -5,7 +5,7 @@ const config = require("./config.json");
 const snoowrap = require("snoowrap");
 require("dotenv").config();
 
-const testMode = true
+const testMode = false
 
 const reddit = new snoowrap({
   userAgent: "Scraper",
