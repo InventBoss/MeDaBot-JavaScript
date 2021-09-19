@@ -61,6 +61,6 @@ module.exports = {
       .addField("Moves :chess_pawn:", `:robot: Bot: ${botMove}\n:face_with_monocle: Player: ${playerMove}`, true)
       .addField("Winner :tada:", `**${result}**`, true)
     
-    message.channel.send(embed)
+    message.channel.send({embeds : [embed]})
   }
 }

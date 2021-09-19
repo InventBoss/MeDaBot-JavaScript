@@ -62,6 +62,6 @@ module.exports = {
       embed.addField("What Commands? :thinking:", "We don't know what commands you think exist. Read all the existant commands using `>list` or `>help`.")
     }
     
-    message.channel.send(embed)
+    message.channel.send({embeds : [embed]})
   }
 }

@@ -18,14 +18,14 @@ module.exports = {
       const embed = new Discord.MessageEmbed()
           .setColor("#ff4301")
           .setDescription("**LOADING MEME**")
-      message.channel.send(embed).then(async memeMessage => {
+      message.channel.send({embeds : [embed]}).then(async memeMessage => {
 
         const post = await reddit.getSubreddit("memes").getRandomSubmission()
         if (post.over_18) {
           const embed = new Discord.MessageEmbed()
             .setColor("#ff4301")
             .setDescription("**SORRY THIS POST IS NSFW**")
-          memeMessage.edit(embed)
+          memeMessage.edit({embeds : [embed]})
           return
         }
 
@@ -39,7 +39,7 @@ module.exports = {
         } else {
           embed.setDescription(`**[${post.title.toUpperCase()}]\(https://reddit.com/r/memes/comments/${post.id}/${post.title.replace(/ /g, "_").replace(/"/g, "").replace(/\*/g, "")})**\n\n${post.selftext}`)
         }
-        memeMessage.edit(embed)
+        memeMessage.edit({embeds : [embed]})
       })
     }
 

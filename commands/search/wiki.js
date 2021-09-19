@@ -12,7 +12,7 @@ module.exports = {
         .setDescription("**LOADING WIKI**")
         .setColor("#f7f7f7")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       var query = querystring.stringify({ term: args.join(' ') })
 
       fetch(`http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&format=json`).then(response => response.json()).then(json => {
@@ -22,7 +22,7 @@ module.exports = {
           .setThumbnail("https://cdn.discordapp.com/attachments/836672279483252847/844892015073820692/unknown.png")
           .setColor("#f7f7f7")
 
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })   
     })
   }

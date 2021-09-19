@@ -5,7 +5,7 @@ const config = require("./config.json");
 const snoowrap = require("snoowrap");
 require("dotenv").config();
 
-const testMode = false
+const testMode = true
 
 const reddit = new snoowrap({
   userAgent: "Scraper",
@@ -25,7 +25,12 @@ function startBot() {
 }
 
 var prefix = config.prefix;
-const client = new Discord.Client();
+const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS,
+                                              Discord.Intents.FLAGS.GUILD_MESSAGES,
+                                              Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+                                              Discord.Intents.FLAGS.DIRECT_MESSAGES,
+                                              Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS],
+                                    partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 client.commands = new Discord.Collection();
 
 const dadBotTriggerWords = ["i'm", "im", "I'm", "Im", "I'M", "IM", "i'M", "iM"];
@@ -60,7 +65,7 @@ client.on("ready", async () => {
   console.log("-------------Log-------------");
 });
 
-client.on("message", (message) => {
+client.on("messageCreate", message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
   const text = args.join(" ");
@@ -82,7 +87,7 @@ client.on("message", (message) => {
       const embed = new Discord.MessageEmbed()
         .setColor("#ff4301")
         .setDescription("**LOADING BOTTOM GEAR**");
-      message.channel.send(embed).then(async (postMessage) => {
+      message.channel.send({embeds : [embed]}).then(async (postMessage) => {
         const post = await reddit
           .getSubreddit("bottomgear")
           .getRandomSubmission();
@@ -115,7 +120,7 @@ client.on("message", (message) => {
           );
         }
 
-        postMessage.edit(embed);
+        postMessage.edit({embeds : [embed]});
       });
     }
 

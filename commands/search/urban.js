@@ -11,7 +11,7 @@ module.exports = {
         .setDescription("**LOADING DESCRIPTION**")
         .setColor("#002a61")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       var query = querystring.stringify({ term: args.join(' ') })
 
       fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json()).then(json => {
@@ -21,7 +21,7 @@ module.exports = {
               .setAuthor(`No results found for "${text}"`)
               .setColor("#002a61")
             
-            m.edit(embed)
+            m.edit({embeds : [embed]})
           } else {
             try {
               const embed = new Discord.MessageEmbed()
@@ -31,7 +31,7 @@ module.exports = {
                 .setThumbnail(url="https://cdn.discordapp.com/attachments/836672279483252847/844867533290471424/unknown.png")
                 .setColor("#002a61")
 
-              m.edit(embed)
+              m.edit({embeds : [embed]})
             } catch(error) {
               if (error instanceof RangeError) {
                 const embed = new Discord.MessageEmbed()
@@ -40,13 +40,13 @@ module.exports = {
                 .setThumbnail(url="https://cdn.discordapp.com/attachments/836672279483252847/844867533290471424/unknown.png")
                 .setColor("#002a61")
 
-                m.edit(embed)
+                m.edit({embeds : [embed]})
               } else {
                 const embed = new Discord.MessageEmbed()
                   .setAuthor(`An error occured while searching "${text}"`)
                   .setColor("#002a61")
                 
-                m.edit(embed)
+                m.edit({embeds : [embed]})
                 console.log("<Error>\n" + error)
               }
             }

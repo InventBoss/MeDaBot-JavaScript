@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const fetch = require("node-fetch")
 
-const emojiArray = new Array("1️⃣", "2️⃣", "3️⃣", "4️⃣")
+const buttonArray = new Array("button1", "button2", "button3", "button4")
 
 const htmlUnescapes = {
   "&amp;": "&",
@@ -27,14 +27,28 @@ module.exports = {
         .setDescription("**LOADING TRIVIA**")
         .setColor("#e1ff00")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       
       fetch("https://opentdb.com/api.php?amount=4&type=multiple").then(response => response.json()).then(async json => {
         
-        await m.react("1️⃣")
-        await m.react("2️⃣")
-        await m.react("3️⃣")
-        await m.react("4️⃣")
+        const row = new Discord.MessageActionRow().addComponents(
+          new Discord.MessageButton()
+            .setCustomId("button1")
+              .setLabel("1")
+              .setStyle("SUCCESS"),
+          new Discord.MessageButton()
+            .setCustomId("button2") 
+            .setLabel("2")
+            .setStyle("SUCCESS"),
+          new Discord.MessageButton()
+            .setCustomId("button3") 
+            .setLabel("3")
+            .setStyle("SUCCESS"),
+          new Discord.MessageButton()
+            .setCustomId("button4")
+            .setLabel("4")
+            .setStyle("SUCCESS")
+        )
 
         result = json.results[0]
 
@@ -49,48 +63,51 @@ module.exports = {
           .setFooter(`CATEGORY: ${result.category} | DIFFICULTY: ${result.difficulty}`)
           .setColor("#e1ff00")
 
-        m.edit(embed)
+        m.edit({embeds : [embed], components: [row]})
 
-        const filter = (reaction, user) => reaction.emoji.name === "1️⃣" || reaction.emoji.name === "2️⃣" || reaction.emoji.name === "3️⃣" || reaction.emoji.name === "4️⃣" && user.id === message.author.id
-
-        m.awaitReactions(filter, { time: 15000 }).then(collected => {
+        const filter = (interaction) => {
+          if (interaction.user.id === message.author.id) return true
+          return false
+        }
+  
+        const collector = m.createMessageComponentCollector({filter, time: 10000})
+        
+        collector.on('collect', async interaction => {
+          await interaction.deferUpdate()
+        })
+        
+        collector.on("end", collected => {
+          const collectedArray = Array.from(collected)
           if (collected.size === 0) {
             const embed = new Discord.MessageEmbed()
               .setTitle("**Trivia** :question:")
               .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
               .setColor("#e1ff00")
 
-            m.edit(embed)
-          } if (collected.size > 1) {
-            const embed = new Discord.MessageEmbed()
-              .setTitle("**Trivia** :question:")
-              .setDescription(`**You chose too many answers.**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
-              .setColor("#e1ff00")
-
-            m.edit(embed)
+            m.edit({embeds : [embed]})
           } else {
             for (let i = 0; i < 4; i++) {
               if (optionsArray[i] === result.correct_answer) {
-                const chosenEmoji = emojiArray[i]
-                if (collected.get(chosenEmoji) == null) {
+                const chosenEmoji = buttonArray[i]
+                if (collectedArray[collected.size - 1][1].customId !== chosenEmoji) {
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
                     .setDescription(`**Sorry!**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
                     .setColor("#e1ff00")
 
-                  m.edit(embed)
+                  m.edit({embeds : [embed]})
                 } else {
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
                     .setDescription(`**You are correct!**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
                     .setColor("#e1ff00")
 
-                  m.edit(embed)
+                  m.edit({embeds : [embed]})
                 }
               }
             }
           }
-        }).catch(console.error)
+        })
       })    
     })
   }

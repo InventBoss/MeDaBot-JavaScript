@@ -35,6 +35,6 @@ module.exports = {
     embed.addField("Question:", `_${text.toString().replace(/,/g, " ")}_`)
     embed.addField("Answer:", `**_${chosenAnswer}_**`)
 
-    message.channel.send(embed)
+    message.channel.send({embeds : [embed]})
   }
 }

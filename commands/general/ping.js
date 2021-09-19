@@ -7,13 +7,13 @@ module.exports = {
       .setDescription("**PINGING...**", message.author.displayAvatarURL)
       .setColor("#6b03fc")
 
-    message.channel.send(embed).then(m =>{
+    message.channel.send({embeds : [embed]}).then(m =>{
       var ping = m.createdTimestamp - message.createdTimestamp
       const embed = new Discord.MessageEmbed()
         .setAuthor(`Your ping is ${ping}ms`, message.author.displayAvatarURL())
         .setColor("#6b03fc")
         
-      m.edit(embed)
+      m.edit({embeds : [embed]})
     })
   }
 }

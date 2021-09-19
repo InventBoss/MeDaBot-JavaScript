@@ -8,14 +8,14 @@ module.exports = {
         .setDescription("**LOADING QUOTE**")
         .setColor("#8945ff")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       
       fetch("https://zenquotes.io/api/random").then(response => response.json()).then(json => {
         const embed = new Discord.MessageEmbed()
           .setDescription(`> ${json[0].q}\n\n - ${json[0].a}`)
           .setColor("#8945ff")
         
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })
     })
   }

@@ -8,7 +8,7 @@ module.exports = {
         .setDescription("**LOADING URL**")
         .setColor("#636363")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       const params = new URLSearchParams()
       params.append("url", text)
       fetch(`https://cleanuri.com/api/v1/shorten`, {method: "post", body: params}).then(response => response.json()).then(json => {
@@ -17,7 +17,7 @@ module.exports = {
           .setDescription(`> Here is your link \`${result}\``)
           .setColor("#636363")
           
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })    
     })    
   }

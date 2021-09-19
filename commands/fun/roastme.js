@@ -8,7 +8,7 @@ module.exports = {
         .setDescription("**LOADING SADNESS**")
         .setColor("#fc4e03")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       
       fetch("https://evilinsult.com/generate_insult.php?lang=en&type=json").then(response => response.json()).then(json => {
         result = json.insult
@@ -16,7 +16,7 @@ module.exports = {
           .setDescription(`\`\`\`${result.replace(/&quot;/g, "\"")}\`\`\``)
           .setColor("#fc4e03")
           
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })    
     })
   }

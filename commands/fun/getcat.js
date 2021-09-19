@@ -9,7 +9,7 @@ module.exports = {
         .setDescription("**LOADING CAT**")
         .setColor("#ffbafd")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       
       fetch("https://api.thecatapi.com/v1/images/search?api_key=5de82e74-44aa-4e27-b35a-73113343c57d").then(response => response.json()).then(json => {
         result = json[0].url
@@ -18,7 +18,7 @@ module.exports = {
           .setImage(result)
           .setColor("#ffbafd")
           
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })    
     })
   }

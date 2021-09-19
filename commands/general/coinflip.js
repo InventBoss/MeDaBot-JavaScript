@@ -15,6 +15,6 @@ module.exports = {
       .setColor("#0c8514")
       .setTitle("**Coin Flip** :coin:")
       .setDescription(`It landed on${chosenFace}`)
-    message.channel.send(embed)     
+    message.channel.send({embeds : [embed]})     
   }
 }

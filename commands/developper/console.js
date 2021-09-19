@@ -56,7 +56,7 @@ module.exports = {
         .setTitle("**Uptime :alarm_clock:**")
         .setDescription(`**DAYS**: ${days}\n**HOURS**: ${hours}\n**MINUTES**: ${minutes}\n**SECONDS**: ${seconds}\n`)
         .setColor("#b5005b")
-      message.channel.send(embed)
+      message.channel.send({embeds : [embed]})
     
     } else if (args[0] === "help" || args[0] === "list") {
 
@@ -68,7 +68,7 @@ module.exports = {
         .addField("List", "> Reminds you about the stuff you can do master.")
         .addField("Remindaboutrewind", "> Reminds a specified user about something that can help society.")
         .setColor("#68fc8a")
-      message.channel.send(embed)
+      message.channel.send({embeds : [embed]})
     } 
   }
 }

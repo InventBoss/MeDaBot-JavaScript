@@ -26,7 +26,7 @@ module.exports = {
         .setTitle("**Math :pencil2:**")
         .setDescription(`An error occured while calculating \`${input}\``)
 
-      message.channel.send(embed)
+      message.channel.send({embeds : [embed]})
       return
     }
   }

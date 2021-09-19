@@ -16,6 +16,6 @@ module.exports = {
       .addField("Owner :crown:", `The owner is ${owner}`)
       .addField("Members :scroll:", `There are ${totalMembers} members`)
     
-    message.channel.send(embed)
+    message.channel.send({embeds : [embed]})
   }
 }

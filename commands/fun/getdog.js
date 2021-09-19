@@ -9,7 +9,7 @@ module.exports = {
         .setDescription("**LOADING DOGGO**")
         .setColor("#34c4e0")
 
-    message.channel.send(embed).then(m => {
+    message.channel.send({embeds : [embed]}).then(m => {
       
       fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json()).then(json => {
         result = json.message
@@ -18,7 +18,7 @@ module.exports = {
           .setImage(result)
           .setColor("#34c4e0")
           
-        m.edit(embed)
+        m.edit({embeds : [embed]})
       })    
     })
   }

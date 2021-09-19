@@ -14,7 +14,7 @@ module.exports = {
           .setAuthor("ADDING EMOJI")
           .setColor("#fff700")
 
-        message.channel.send(embed).then(m => {
+        message.channel.send({embeds : [embed]}).then(m => {
           const imageUrl = message.attachments.first().url
           const currentGuild = message.guild
         
@@ -24,7 +24,7 @@ module.exports = {
             .setTitle(`Added ${args[0]} to ${currentGuild}`)
             .setImage(imageUrl)
             .setColor("#fff700")
-          m.edit(embed)
+          m.edit({embeds : [embed]})
 
         })
       } catch (error) {
