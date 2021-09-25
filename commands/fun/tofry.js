@@ -24,13 +24,11 @@ module.exports = {
           .contrast(0.75)
           .posterize(8)
           .write(`./commands/fun/ImageStorage/${fileName}.png`)
-          message.channel.startTyping()
           message.channel.send({
             files: [
               `./commands/fun/ImageStorage/${fileName}.png`
             ]
           })
-          message.channel.stopTyping()
         })
         await sleep(10000)
         fs.unlink(path.resolve(__dirname, `./ImageStorage/${fileName}.png`), (error) => {
