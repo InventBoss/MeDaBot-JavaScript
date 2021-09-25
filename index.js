@@ -57,7 +57,7 @@ for (const file of commandFiles) {
 }
 
 client.on("ready", async () => {
-  client.user.setActivity("The little shit who fell into Harambes cage.", {
+  client.user.setActivity(">list to get started", {
     type: "WATCHING",
   });
 

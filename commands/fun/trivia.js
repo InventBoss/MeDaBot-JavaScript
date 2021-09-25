@@ -34,8 +34,8 @@ module.exports = {
         const row = new Discord.MessageActionRow().addComponents(
           new Discord.MessageButton()
             .setCustomId("button1")
-              .setLabel("1")
-              .setStyle("SUCCESS"),
+            .setLabel("1")
+            .setStyle("SUCCESS"),
           new Discord.MessageButton()
             .setCustomId("button2") 
             .setLabel("2")
