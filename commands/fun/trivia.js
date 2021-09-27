@@ -34,19 +34,19 @@ module.exports = {
         const row = new Discord.MessageActionRow().addComponents(
           new Discord.MessageButton()
             .setCustomId("button1")
-            .setLabel("1")
+            .setLabel("Option 1")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
             .setCustomId("button2") 
-            .setLabel("2")
+            .setLabel("Option 2")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
             .setCustomId("button3") 
-            .setLabel("3")
+            .setLabel("Option 3")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
             .setCustomId("button4")
-            .setLabel("4")
+            .setLabel("Option 4")
             .setStyle("SUCCESS")
         )
 
@@ -81,25 +81,40 @@ module.exports = {
           if (collected.size === 0) {
             const embed = new Discord.MessageEmbed()
               .setTitle("**Trivia** :question:")
-              .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
+              .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> *${unescape(result.correct_answer.trim())}*`)
               .setColor("#e1ff00")
 
             m.edit({embeds : [embed]})
           } else {
             for (let i = 0; i < 4; i++) {
               if (optionsArray[i] === result.correct_answer) {
-                const chosenEmoji = buttonArray[i]
-                if (collectedArray[collected.size - 1][1].customId !== chosenEmoji) {
+                const chosenButton = buttonArray[i]
+                if (collectedArray[collected.size - 1][1].customId !== chosenButton) {
+                  let chosenOption = 0
+                  switch (chosenButton) {
+                    case "button_1":
+                      chosenOption = 0
+                      break
+                    case "button_2":
+                      chosenOption = 1
+                      break
+                    case "button_3":
+                      chosenOption = 2
+                      break
+                    case "button_4":
+                      chosenOption = 3
+                      break
+                  }
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
-                    .setDescription(`**Sorry!**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
+                    .setDescription(`**Sorry!**\n\nThe answer isn't **${optionsArray[chosenOption]}** it's\n> **${unescape(result.correct_answer.trim())}**`)
                     .setColor("#e1ff00")
 
                   m.edit({embeds : [embed]})
                 } else {
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
-                    .setDescription(`**You are correct!**\n\nThe answer is\n> *${unescape(result.correct_answer)}*`)
+                    .setDescription(`**You are correct!**\n\nThe answer is\n> **${unescape(result.correct_answer.trim())}**`)
                     .setColor("#e1ff00")
 
                   m.edit({embeds : [embed]})
