@@ -3,9 +3,17 @@ const stayAlive = require("./stayalive.js");
 const Discord = require("discord.js");
 const config = require("./config.json");
 const snoowrap = require("snoowrap");
+const { Routes } = require('discord-api-types/v9');
+const { REST } = require('@discordjs/rest');
 require("dotenv").config();
 
-const testMode = false
+const testMode = true
+let chosen_token = null
+  if (testMode) {
+    chosen_token = process.env["TEST_TOKEN"]
+  } else {
+    chosen_token = process.env["TOKEN"]
+  }
 
 const reddit = new snoowrap({
   userAgent: "Scraper",
@@ -15,12 +23,6 @@ const reddit = new snoowrap({
 });
 
 function startBot() {
-  let chosen_token = null
-  if (testMode) {
-    chosen_token = process.env["TEST_TOKEN"]
-  } else {
-    chosen_token = process.env["TOKEN"]
-  }
   client.login(chosen_token);
 }
 
@@ -55,6 +57,15 @@ for (const file of commandFiles) {
   const commandsName = require(`./commands/${file}`);
   client.commands.set(commandsName.name, commandsName);
 }
+
+const rest = new REST({ version: '9' }).setToken(chosen_token);
+
+(async () => {
+  await rest.put(
+    Routes.applicationGuildCommands(client.user.id, 808768946311528561),
+    { body: commands },
+  )
+})
 
 client.on("ready", async () => {
   client.user.setActivity(">list to get started", {
@@ -91,7 +102,15 @@ client.on("messageCreate", message => {
         const post = await reddit
           .getSubreddit("bottomgear")
           .getRandomSubmission();
-
+        
+        if (post.over_18 && !message.channel.nsfw) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#ff4301")
+            .setDescription("**SORRY THIS POST IS NSFW**")
+          postMessage.edit({embeds : [embed]})
+          return
+        }
+        
         const embed = new Discord.MessageEmbed()
           .setColor("#ff4301")
           .setDescription(

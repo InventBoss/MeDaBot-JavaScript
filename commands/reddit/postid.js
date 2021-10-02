@@ -21,7 +21,7 @@ module.exports = {
       message.channel.send({embeds : [embed]}).then(async postMessage => {
         
         var post = await reddit.getSubmission(args[0])
-        if (await post.over_18) {
+        if (await post.over_18 && !message.channel.nsfw) {
           const embed = new Discord.MessageEmbed()
             .setColor("#ff4301")
             .setDescription("**SORRY THIS POST IS NSFW**")

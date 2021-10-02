@@ -16,7 +16,7 @@ module.exports = {
       new Discord.MessageButton()
         .setLabel("Invite")
         .setStyle("LINK")
-        .setURL("https://discord.com/api/oauth2/authorize?client_id=763313827944202250&permissions=1073866944&scope=bot")
+        .setURL("https://discord.com/api/oauth2/authorize?client_id=763313827944202250&permissions=1073866944&scope=bot%20applications.commands")
     )
 
     const embed = new Discord.MessageEmbed()
