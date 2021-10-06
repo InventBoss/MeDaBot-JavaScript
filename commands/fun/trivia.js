@@ -3,23 +3,6 @@ const fetch = require("node-fetch")
 
 const buttonArray = new Array("button1", "button2", "button3", "button4")
 
-const htmlUnescapes = {
-  "&amp;": "&",
-  "&lt;": "<",
-  "&gt;": ">",
-  "&quot;": "\"",
-  "&#39;": "'"
-}
-
-const reEscapedHtml = /&(?:amp|lt|gt|quot|#39);/g
-const reHasEscapedHtml = RegExp(reEscapedHtml.source)
-
-function unescape(string) {
-  return (string && reHasEscapedHtml.test(string))
-    ? string.replace(reEscapedHtml, (entity) => htmlUnescapes[entity])
-    : string
-}
-
 module.exports = {
   name: "trivia",
   execute(message) {
@@ -29,7 +12,7 @@ module.exports = {
 
     message.channel.send({embeds : [embed]}).then(m => {
       
-      fetch("https://opentdb.com/api.php?amount=4&type=multiple").then(response => response.json()).then(async json => {
+      fetch("https://opentdb.com/api.php?amount=4&type=multiple&encode=url3986").then(response => response.json()).then(async json => {
         
         const row = new Discord.MessageActionRow().addComponents(
           new Discord.MessageButton()
@@ -59,8 +42,8 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
           .setTitle("**Trivia** :question:")
-          .setDescription(`**${unescape(result.question)}**\n\n1. ${unescape(optionsArray[0])}\n2. ${unescape(optionsArray[1])}\n3. ${unescape(optionsArray[2])}\n4. ${unescape(optionsArray[3])}`)
-          .setFooter(`CATEGORY: ${result.category} | DIFFICULTY: ${result.difficulty}`)
+          .setDescription(`**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. ${decodeURIComponent(optionsArray[1])}\n3. ${decodeURIComponent(optionsArray[2])}\n4. ${decodeURIComponent(optionsArray[3])}`)
+          .setFooter(`CATEGORY: ${decodeURIComponent(result.category)} | DIFFICULTY: ${decodeURIComponent(result.difficulty)}`)
           .setColor("#e1ff00")
 
         m.edit({embeds : [embed], components: [row]})
@@ -74,6 +57,29 @@ module.exports = {
         
         collector.on('collect', async interaction => {
           await interaction.deferUpdate()
+          const interactionArray = interaction.customId
+          let description
+
+          switch(interactionArray) {
+            case "button1":
+              description = `**${decodeURIComponent(result.question)}**\n\n1. **${decodeURIComponent(optionsArray[0])}**\n2. ${decodeURIComponent(optionsArray[1])}\n3. ${decodeURIComponent(optionsArray[2])}\n4. ${decodeURIComponent(optionsArray[3])}`
+              break
+            case "button2":
+              description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. **${decodeURIComponent(optionsArray[1])}**\n3. ${decodeURIComponent(optionsArray[2])}\n4. ${decodeURIComponent(optionsArray[3])}`
+              break
+            case "button3":
+              description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. ${decodeURIComponent(optionsArray[1])}\n3. **${decodeURIComponent(optionsArray[2])}**\n4. ${decodeURIComponent(optionsArray[3])}`
+              break
+            case "button4":
+              description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. ${decodeURIComponent(optionsArray[1])}\n3. ${decodeURIComponent(optionsArray[2])}\n4. **${decodeURIComponent(optionsArray[3])}**`
+              break
+          }
+          const interactionEmbed = new Discord.MessageEmbed()
+            .setTitle("**Trivia** :question:")
+            .setDescription(description)
+            .setFooter(`CATEGORY: ${decodeURIComponent(result.category)} | DIFFICULTY: ${decodeURIComponent(result.difficulty)}`)
+            .setColor("#e1ff00")
+          m.edit({embeds : [interactionEmbed], components: [row]})
         })
         
         collector.on("end", collected => {
@@ -81,40 +87,42 @@ module.exports = {
           if (collected.size === 0) {
             const embed = new Discord.MessageEmbed()
               .setTitle("**Trivia** :question:")
-              .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> *${unescape(result.correct_answer.trim())}*`)
+              .setDescription(`**You ran out of time to answer the question.**\n\nThe answer is\n> **${decodeURIComponent(result.correct_answer.trim())}**`)
               .setColor("#e1ff00")
 
             m.edit({embeds : [embed]})
           } else {
             for (let i = 0; i < 4; i++) {
               if (optionsArray[i] === result.correct_answer) {
-                const chosenButton = buttonArray[i]
-                if (collectedArray[collected.size - 1][1].customId !== chosenButton) {
-                  let chosenOption = 0
-                  switch (chosenButton) {
-                    case "button_1":
-                      chosenOption = 0
+                const currentButton = buttonArray[i]
+                if (collectedArray[collected.size - 1][1].customId !== currentButton) {
+                  let chosenButtonId = collectedArray[collected.size - 1][1].customId
+                  let chosenButton = 0
+
+                  switch(chosenButtonId) {
+                    case "button1":
+                      chosenButton = 0
                       break
-                    case "button_2":
-                      chosenOption = 1
+                    case "button2":
+                      chosenButton = 1
                       break
-                    case "button_3":
-                      chosenOption = 2
+                    case "button3":
+                      chosenButton = 2
                       break
-                    case "button_4":
-                      chosenOption = 3
+                    case "button4":
+                      chosenButton = 3
                       break
                   }
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
-                    .setDescription(`**Sorry!**\n\nThe answer isn't **${optionsArray[chosenOption]}** it's\n> **${unescape(result.correct_answer.trim())}**`)
+                    .setDescription(`**Sorry!**\n\nThe answer isn't **${decodeURIComponent(optionsArray[chosenButton].trim())}** it's\n> **${decodeURIComponent(result.correct_answer.trim())}**`)
                     .setColor("#e1ff00")
 
                   m.edit({embeds : [embed]})
                 } else {
                   const embed = new Discord.MessageEmbed()
                     .setTitle("**Trivia** :question:")
-                    .setDescription(`**You are correct!**\n\nThe answer is\n> **${unescape(result.correct_answer.trim())}**`)
+                    .setDescription(`**You are correct!**\n\nThe answer is\n> **${decodeURIComponent(result.correct_answer.trim())}**`)
                     .setColor("#e1ff00")
 
                   m.edit({embeds : [embed]})

@@ -7,7 +7,8 @@ const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 require("dotenv").config();
 
-const testMode = true
+const testMode = false
+
 let chosen_token = null
   if (testMode) {
     chosen_token = process.env["TEST_TOKEN"]
