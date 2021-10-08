@@ -42,13 +42,13 @@ module.exports = {
 
     switch (winner) {
       case 0:
-        result = "Player wins!"
+        result = "The player!"
         break
       case 1:
-        result = "Bot wins!"
+        result = "The bot!"
         break
       case 2:
-        result = "Its a tie!"
+        result = "No one... Its a tie!"
         break
       case 3:
         result = "An error occured."
@@ -57,9 +57,10 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setColor("#ffa047")
-      .setTitle("**Rock Paper Scissors** :fist::raised_hand::v:")
-      .addField("Moves :chess_pawn:", `:robot: Bot: ${botMove}\n:face_with_monocle: Player: ${playerMove}`, true)
-      .addField("Winner :tada:", `**${result}**`, true)
+      .setTitle("**Rock Paper Scissors** :chess_pawn:")
+      .addField("**Player Move**", `> ${playerMove}`, true)
+      .addField("**Bot Move**", `> ${botMove}`, true)
+      .addField("And the Winner is... ", `> **${result}**`, false)
     
     message.channel.send({embeds : [embed]})
   }

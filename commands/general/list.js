@@ -22,7 +22,6 @@ module.exports = {
       embed.addField("Rps", "> Play rock paper scissors with a bot!")
       embed.addField("Math", "> Allows you to do arithmetic operations... NERD!")
       embed.addField("Coinflip", "> Flip a coin and see what side it lands on.")
-      embed.addField("Serverinfo", "> Get info about the server you're in.")
       embed.addField("About", "> Wanna learn about me? Great! Type this command.")
       embed.addField("Tools", "> Wanna learn about what I used? Great! Type this command.")
       embed.addField("Shortenurl", "> Shorten your long urls (eg. https://google.com/)")

@@ -14,10 +14,16 @@ module.exports = {
           .setColor("#9c2c00")
           .setTitle("**Math :pencil2:**")
           .addField("Equation", input)
-          .addField("Result", result)
-        message.channel.send(embed)
+          .addField("Result", `**${result}**`)
+
+        message.channel.send({embeds : [embed]})
       } else {
-        throw `<Code Alert> Detected potential code from <${message.author.tag}> in <${message.guild}>`
+        const embed = new Discord.MessageEmbed()
+          .setColor("#9c2c00")
+          .setTitle("**Math :pencil2:**")
+          .setDescription(`An error occured while calculating \`${input}\``)
+
+        message.channel.send({embeds : [embed]})
       }
     } catch (error) {
       console.log(error)

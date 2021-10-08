@@ -32,8 +32,8 @@ module.exports = {
     const embed = new Discord.MessageEmbed()
       .setColor("#2e2a9c")
       .setTitle("**8ball :8ball:**")
-    embed.addField("Question:", `_${text.toString().replace(/,/g, " ")}_`)
-    embed.addField("Answer:", `**_${chosenAnswer}_**`)
+    embed.addField("**Question**", `> _${text.toString().replace(/,/g, " ")}_`)
+    embed.addField("**Answer**", `> **${chosenAnswer}**`)
 
     message.channel.send({embeds : [embed]})
   }

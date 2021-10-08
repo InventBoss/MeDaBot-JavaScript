@@ -6,6 +6,10 @@ module.exports = {
   execute(message) {
     const row = new Discord.MessageActionRow().addComponents(
       new Discord.MessageButton()
+        .setLabel("Top.gg")
+        .setStyle("LINK")
+        .setURL("https://top.gg/bot/763313827944202250"),
+      new Discord.MessageButton()
         .setLabel("Twitter")
         .setStyle("LINK")
         .setURL("https://twitter.com/Invent_Boss"),
