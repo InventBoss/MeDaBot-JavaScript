@@ -14,21 +14,23 @@ module.exports = {
       
       fetch("https://opentdb.com/api.php?amount=4&type=multiple&encode=url3986").then(response => response.json()).then(async json => {
         
+        const buttonNameArray = new Array(Math.random().toString(36).substring(10), Math.random().toString(36).substring(10), Math.random().toString(36).substring(10), Math.random().toString(36).substring(10))
+
         const row = new Discord.MessageActionRow().addComponents(
           new Discord.MessageButton()
-            .setCustomId("button1")
+            .setCustomId(buttonNameArray[0])
             .setLabel("Option 1")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
-            .setCustomId("button2") 
+            .setCustomId(buttonNameArray[1]) 
             .setLabel("Option 2")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
-            .setCustomId("button3") 
+            .setCustomId(buttonNameArray[2]) 
             .setLabel("Option 3")
             .setStyle("SUCCESS"),
           new Discord.MessageButton()
-            .setCustomId("button4")
+            .setCustomId(buttonNameArray[3])
             .setLabel("Option 4")
             .setStyle("SUCCESS")
         )
@@ -61,16 +63,16 @@ module.exports = {
           let description
 
           switch(interactionArray) {
-            case "button1":
+            case buttonNameArray[0]:
               description = `**${decodeURIComponent(result.question)}**\n\n1. **${decodeURIComponent(optionsArray[0])}**\n2. ${decodeURIComponent(optionsArray[1])}\n3. ${decodeURIComponent(optionsArray[2])}\n4. ${decodeURIComponent(optionsArray[3])}`
               break
-            case "button2":
+            case buttonNameArray[1]:
               description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. **${decodeURIComponent(optionsArray[1])}**\n3. ${decodeURIComponent(optionsArray[2])}\n4. ${decodeURIComponent(optionsArray[3])}`
               break
-            case "button3":
+            case buttonNameArray[2]:
               description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. ${decodeURIComponent(optionsArray[1])}\n3. **${decodeURIComponent(optionsArray[2])}**\n4. ${decodeURIComponent(optionsArray[3])}`
               break
-            case "button4":
+            case buttonNameArray[3]:
               description = `**${decodeURIComponent(result.question)}**\n\n1. ${decodeURIComponent(optionsArray[0])}\n2. ${decodeURIComponent(optionsArray[1])}\n3. ${decodeURIComponent(optionsArray[2])}\n4. **${decodeURIComponent(optionsArray[3])}**`
               break
           }
@@ -100,16 +102,16 @@ module.exports = {
                   let chosenButton = 0
 
                   switch(chosenButtonId) {
-                    case "button1":
+                    case buttonNameArray[0]:
                       chosenButton = 0
                       break
-                    case "button2":
+                    case buttonNameArray[1]:
                       chosenButton = 1
                       break
-                    case "button3":
+                    case buttonNameArray[2]:
                       chosenButton = 2
                       break
-                    case "button4":
+                    case buttonNameArray[3]:
                       chosenButton = 3
                       break
                   }
