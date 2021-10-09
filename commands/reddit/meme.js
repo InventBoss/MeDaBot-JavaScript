@@ -6,7 +6,7 @@ const reddit = new snoowrap({
     clientId: process.env["REDDIT_ID"],
     clientSecret: process.env["REDDIT_SECRET"],
     refreshToken: process.env["REDDIT_REFRESH_TOKEN"]
-  })
+})
 const extension = [".jpg", ".png", ".svg", ".mp4", ".gif"];
 
 module.exports = {

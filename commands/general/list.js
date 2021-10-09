@@ -36,6 +36,7 @@ module.exports = {
       embed.addField("Getanimegirl", "> Fulfil a weebs dream with this. (DM only)")
       embed.addField("Inspireme", "> Get inspired... that's it.")
       embed.addField("Trivia", "> Test your knowledge about useless things.")
+      embed.addField("Wouldyourather", "> Have some fun deciding meaningless choices")
     
     } else if (args[0] === "search") {
       embed.addField("Urban", "> Finds the definition on the urban dictionary. (Answers are not always serious)")
