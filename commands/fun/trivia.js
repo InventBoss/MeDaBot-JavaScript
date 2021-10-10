@@ -1,8 +1,6 @@
 const Discord = require("discord.js")
 const fetch = require("node-fetch")
 
-const buttonArray = new Array("button1", "button2", "button3", "button4")
-
 module.exports = {
   name: "trivia",
   execute(message) {
@@ -96,7 +94,7 @@ module.exports = {
           } else {
             for (let i = 0; i < 4; i++) {
               if (optionsArray[i] === result.correct_answer) {
-                const currentButton = buttonArray[i]
+                const currentButton = buttonNameArray[i]
                 if (collectedArray[collected.size - 1][1].customId !== currentButton) {
                   let chosenButtonId = collectedArray[collected.size - 1][1].customId
                   let chosenButton = 0
