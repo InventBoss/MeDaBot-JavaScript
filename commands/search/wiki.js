@@ -13,7 +13,7 @@ module.exports = {
         .setColor("#f7f7f7")
 
     message.channel.send({embeds : [embed]}).then(m => {
-      var query = querystring.stringify({ term: args.join(' ') })
+      let query = querystring.stringify({ term: args.join(' ') })
 
       fetch(`http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&format=json`).then(response => response.json()).then(json => {
         const embed = new Discord.MessageEmbed()

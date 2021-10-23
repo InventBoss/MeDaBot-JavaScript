@@ -4,10 +4,10 @@ module.exports = {
   name: "math",
   aliases: ["calculate"],
   execute(message, args) {
-    var regEx = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/g;
+    let regEx = /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)/g;
 
     try {
-      var input = args[0]
+      let input = args[0]
       if (regEx.test(input)) {
         result = eval(input)
         const embed = new Discord.MessageEmbed()

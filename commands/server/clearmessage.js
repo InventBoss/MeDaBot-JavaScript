@@ -10,7 +10,7 @@ module.exports = {
         args[0] = 10
       }
       try {
-        var convertedResult = parseInt(args[0])
+        let convertedResult = parseInt(args[0])
         message.channel.bulkDelete(++convertedResult)
       } catch (error) {
         console.log("<Error>\n" + error)

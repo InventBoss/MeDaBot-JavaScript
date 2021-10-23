@@ -4,9 +4,9 @@ module.exports = {
   name: "coinflip",
   aliases: ["flipacoin"],
   execute(message) {
-    var faces = [" heads!", " tails!"]
-    var chosenFace = faces[Math.floor(Math.random() * faces.length)]
-    var sideChance = Math.round(Math.random() * (69 - 1) + 1)
+    let faces = [" heads!", " tails!"]
+    let chosenFace = faces[Math.floor(Math.random() * faces.length)]
+    let sideChance = Math.round(Math.random() * (69 - 1) + 1)
 
     if (sideChance === 42)
       chosenFace = "... its side?!"

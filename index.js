@@ -7,7 +7,7 @@ const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 require("dotenv").config();
 
-const testMode = false
+const testMode = true
 
 let chosen_token = null
   if (testMode) {
@@ -27,7 +27,7 @@ function startBot() {
   client.login(chosen_token);
 }
 
-var prefix = config.prefix;
+let prefix = config.prefix;
 const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS,
                                               Discord.Intents.FLAGS.GUILD_MESSAGES,
                                               Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
@@ -83,10 +83,10 @@ client.on("messageCreate", message => {
   const text = args.join(" ");
 
   // Ignore the greatest features on earth.
-  var firstWord = message.content.split(" ", 1)[0];
+  let firstWord = message.content.split(" ", 1)[0];
 
   if (dadBotTriggerWords.includes(firstWord)) {
-    var triggerChance = Math.round(Math.random() * (8 - 1) + 1);
+    let triggerChance = Math.round(Math.random() * (8 - 1) + 1);
     if (triggerChance === 8) message.channel.send(`Hi ${text}, I\'m MeDaBot!`);
   }
   if (message.content === "summon the moth") {

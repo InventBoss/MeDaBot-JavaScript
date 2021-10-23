@@ -8,9 +8,9 @@ const sleep = promisify(setTimeout)
 module.exports = {
   name: "toinvert",
   execute(message) {
-    var fileName = Math.random().toString(36).substring(5);
+    let fileName = Math.random().toString(36).substring(5);
     try {
-      var imageUrl = message.attachments.first().url
+      let imageUrl = message.attachments.first().url
     } catch (error) {
       console.log("<Error>\n" + error)
       return

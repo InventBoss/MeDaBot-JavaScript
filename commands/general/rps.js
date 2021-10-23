@@ -4,11 +4,11 @@ module.exports = {
   name: "rps",
   aliases: ["rockpaperscissors"],
   execute(message, args) {
-    var playerMove = args[0]
-    var moves = ["rock", "paper", "scissors"]
-    var botMove = moves[Math.floor(Math.random() * moves.length)]
-    var winner = []
-    var result = []
+    let playerMove = args[0]
+    let moves = ["rock", "paper", "scissors"]
+    let botMove = moves[Math.floor(Math.random() * moves.length)]
+    let winner = []
+    let result = []
 
     switch (playerMove) {
       case "r":

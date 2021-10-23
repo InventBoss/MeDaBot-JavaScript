@@ -12,7 +12,7 @@ module.exports = {
         .setColor("#002a61")
 
     message.channel.send({embeds : [embed]}).then(m => {
-      var query = querystring.stringify({ term: args.join(' ') })
+      let query = querystring.stringify({ term: args.join(' ') })
 
       fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json()).then(json => {
 

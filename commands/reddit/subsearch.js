@@ -19,7 +19,7 @@ module.exports = {
           .setDescription("**LOADING POST**")
       message.channel.send({embeds : [embed]}).then(async postMessage => {
 
-        var query = args.slice(1).join(" ")
+        let query = args.slice(1).join(" ")
 
         const posts = await reddit.getSubreddit(args[0]).search({query: query, time: "all", limit: 0, sort: "top"})
         if (post.over_18 && !message.channel.nsfw) {

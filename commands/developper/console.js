@@ -50,13 +50,21 @@ module.exports = {
       if (!message.guild) return message.channel.send("Sorry but I can only do this command in servers.")
 
       message.channel.bulkDelete(1).then(() => {
-        var finalMessage = args.slice(1).join(" ")
+        let finalMessage = args.slice(1).join(" ")
         message.channel.startTyping()
         message.channel.send(finalMessage)
         message.channel.stopTyping()
       })
+
+    } if (args[0] === "server") {
+
+      if (args[1] === "icon") {
+        message.channel.send(message.guild.iconURL())
+      }
     
     } else if (args[0] === "permissions") {
+      if (!message.guild) return message.channel.send("Sorry but I can only do this command in servers.")
+
       let obtainedPermissions = ""
 
       for (let i = 0; i < permissionList.length; i++) {
@@ -72,7 +80,7 @@ module.exports = {
       message.channel.send({embeds : [embed]})
     
     } else if (args[0] === "remindaboutrewind") {
-      var user = message.guild.members.cache.get(args[1])
+      let user = message.guild.members.cache.get(args[1])
       user.send("Hey there! Just a friendly reminder to dislike youtube rewind.\n\nI got the link right here for you:\n\nhttps://www.youtube.com/watch?v=YbJOTdZBX1g")
     
     } else if (args[0] === "auditlog") {
@@ -87,10 +95,10 @@ module.exports = {
 
     } else if (args[0] === "dmuser") {
 
-      var user = message.guild.members.cache.get(args[1])
-      var timesRepeated = parseInt(args[2])
+      let user = message.guild.members.cache.get(args[1])
+      let timesRepeated = parseInt(args[2])
       timesRepeated = timesRepeated--
-      var finalMessage = args.slice(3).join(" ")
+      let finalMessage = args.slice(3).join(" ")
 
       for (i = 0; i < timesRepeated; i++) {
         user.send(finalMessage)
@@ -99,13 +107,13 @@ module.exports = {
       message.channel.send(`${user.id} is being DM'ed`)
     } else if (args[0] === "uptime") {
 
-      var totalSeconds = (message.client.uptime / 1000)
-      var days = Math.floor(totalSeconds / 86400)
+      let totalSeconds = (message.client.uptime / 1000)
+      let days = Math.floor(totalSeconds / 86400)
       totalSeconds %= 86400
-      var hours = Math.floor(totalSeconds / 3600)
+      let hours = Math.floor(totalSeconds / 3600)
       totalSeconds %= 3600
-      var minutes = Math.floor(totalSeconds / 60)
-      var seconds = Math.floor(totalSeconds % 60)
+      let minutes = Math.floor(totalSeconds / 60)
+      let seconds = Math.floor(totalSeconds % 60)
 
       const embed = new Discord.MessageEmbed()
         .setTitle("**Uptime :alarm_clock:**")

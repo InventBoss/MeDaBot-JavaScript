@@ -8,7 +8,7 @@ module.exports = {
       .setColor("#6b03fc")
 
     message.channel.send({embeds : [embed]}).then(m =>{
-      var ping = m.createdTimestamp - message.createdTimestamp
+      let ping = m.createdTimestamp - message.createdTimestamp
       const embed = new Discord.MessageEmbed()
         .setAuthor(`Your ping is ${message.client.ws.ping}ms`, message.author.displayAvatarURL())
         .setColor("#6b03fc")

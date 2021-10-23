@@ -15,7 +15,7 @@ module.exports = {
         'Content-Type': 'application/json'
       };
 
-      var dataString = `{ "long_url": ${args}, "domain": "bit.ly", "group_guid": "Ba1bc23dE4F" }`
+      let dataString = `{ "long_url": ${args}, "domain": "bit.ly", "group_guid": "Ba1bc23dE4F" }`
 
       fetch("https://api-ssl.bitly.com/v4/shorten", {method: "post", headers: headers,  body: dataString}).then(response => response.json()).then(json => {
         result = json.result_url
