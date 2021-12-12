@@ -4,8 +4,10 @@ module.exports = {
   name: "8ball",
   execute(message, text) {
     let choiceType = Math.floor(Math.random() * (3 - 1)) + 1
+
+    let answers;
     if (choiceType === 1) {
-      let answers = ["As I see it, yes",
+      answers = ["As I see it, yes",
                       "It is certain",
                       "It is decidedly so",
                       "Most likely",
@@ -15,13 +17,13 @@ module.exports = {
                       "Yes",
                       "Yes – definitely"]
     } else if (choiceType === 2) {
-      let answers = ["Don’t count on it",
+      answers = ["Don’t count on it",
                     "My reply is no",
                     "My sources say no",
                     "Outlook not so good",
                     "Very doubtful"]
     } else {
-      let answers = ["Ask again later",
+      answers = ["Ask again later",
                     "Better not tell you now",
                     "Cannot predict now",
                     "Concentrate and ask again",

@@ -10,7 +10,7 @@ module.exports = {
         || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
 
       if (!command) {
-      return message.channel.send(`Could not find \`>${commandName}\``)
+        return message.channel.send(`Could not find \`>${commandName}\``)
       }
 
       const commandFolders = fs.readdirSync("./commands")

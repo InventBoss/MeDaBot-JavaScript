@@ -7,14 +7,15 @@ const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 require("dotenv").config();
 
-const testMode = false
+const testMode = true
 
 let chosen_token = null
-  if (testMode) {
-    chosen_token = process.env["TEST_TOKEN"]
-  } else {
-    chosen_token = process.env["TOKEN"]
-  }
+
+if (testMode) {
+  chosen_token = process.env["TEST_TOKEN"]
+} else {
+  chosen_token = process.env["TOKEN"]
+}
 
 const reddit = new snoowrap({
   userAgent: "Scraper",
@@ -58,15 +59,6 @@ for (const file of commandFiles) {
   const commandsName = require(`./commands/${file}`);
   client.commands.set(commandsName.name, commandsName);
 }
-
-const rest = new REST({ version: '9' }).setToken(chosen_token);
-
-(async () => {
-  await rest.put(
-    Routes.applicationGuildCommands(client.user.id, 808768946311528561),
-    { body: commands },
-  )
-})
 
 client.on("ready", async () => {
   client.user.setActivity(">list to get started", {
