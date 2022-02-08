@@ -12,7 +12,6 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
-    "random-anime": "^1.0.6",
-    "snoowrap": "^1.23.0"
+    "random-anime": "^1.0.6"
   }
 }

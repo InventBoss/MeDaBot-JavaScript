@@ -2,9 +2,6 @@ const fs = require("fs");
 const stayAlive = require("./stayalive.js");
 const Discord = require("discord.js");
 const config = require("./config.json");
-const snoowrap = require("snoowrap");
-const { Routes } = require('discord-api-types/v9');
-const { REST } = require('@discordjs/rest');
 require("dotenv").config();
 
 const testMode = true
@@ -17,12 +14,7 @@ if (testMode) {
   chosen_token = process.env["TOKEN"]
 }
 
-const reddit = new snoowrap({
-  userAgent: "Scraper",
-  clientId: process.env["REDDIT_ID"],
-  clientSecret: process.env["REDDIT_SECRET"],
-  refreshToken: process.env["REDDIT_REFRESH_TOKEN"],
-});
+const reddit = "test"
 
 function startBot() {
   client.login(chosen_token);

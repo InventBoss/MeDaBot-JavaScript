@@ -1,12 +1,6 @@
 const Discord = require("discord.js")
-const snoowrap = require("snoowrap")
 
-const reddit = new snoowrap({
-    userAgent: "Scraper",
-    clientId: process.env["REDDIT_ID"],
-    clientSecret: process.env["REDDIT_SECRET"],
-    refreshToken: process.env["REDDIT_REFRESH_TOKEN"]
-  })
+const reddit = "test"
 const extension = [".jpg", ".png", ".svg", ".mp4", ".gif"]
 
 module.exports = {

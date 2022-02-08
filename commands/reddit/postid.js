@@ -1,55 +1,45 @@
 const Discord = require("discord.js")
-const snoowrap = require("snoowrap")
-
-const reddit = new snoowrap({
-    userAgent: "Scraper",
-    clientId: process.env["REDDIT_ID"],
-    clientSecret: process.env["REDDIT_SECRET"],
-    refreshToken: process.env["REDDIT_REFRESH_TOKEN"]
-  })
-const extension = [".jpg", ".png", ".svg", ".mp4", ".gif"];
+const reddit = require("../../reddit.js")
 
 module.exports = {
   name: "postid",
   aliases: ["getpostid"],
-  execute(message, args) {
-
-    async function scrapeSubreddit() {
-      const embed = new Discord.MessageEmbed()
-          .setColor("#ff4301")
-          .setDescription("**LOADING POST**")
-      message.channel.send({embeds : [embed]}).then(async postMessage => {
-        
-        let post = await reddit.getSubmission(args[0])
-        if (await post.over_18 && !message.channel.nsfw) {
-          const embed = new Discord.MessageEmbed()
-            .setColor("#ff4301")
-            .setDescription("**SORRY THIS POST IS NSFW**")
-          postMessage.edit({embeds : [embed]})
-          return
-        }
-
-        let postTitle = `${await post.title}`
-
+  async execute(message, args) {
+    const embed = new Discord.MessageEmbed()
+      .setColor("#ff4301")
+      .setAuthor({ name: "r/loading | u/loading", iconURL: "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_reddit-256.png"})
+      .setDescription("**LOADING POST**")
+    message.channel.send({ embeds : [embed] }).then(async postMessage => {
+      const post = await reddit.getPostFromId(args[0])
+      const subreddit = await reddit.getSubreddit(post.subreddit)
+      
+      if (post.over_18 || subreddit.over18 && !message.channel.nsfw) {
         const embed = new Discord.MessageEmbed()
           .setColor("#ff4301")
-          .setDescription(`**[${postTitle.toUpperCase()}]\(https://reddit.com/r/memes/comments/${await post.id}/${await postTitle.replace(/ /g, "_").replace(/"/g, "").replace(/\*/g, "")})**`)
-          .setFooter(`By u/${await post.author.name} 👑\n💾  Post id: ${await post.id} | 👍  Upvotes: ${await post.ups}`)
+          .setAuthor({ name: `r/${post.subreddit} | u/${post.author}`, iconURL: "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_reddit-256.png"})
+          .setTitle(post.title)
+          .setURL(`https://www.reddit.com/comments/${post.id}`)
+          .setDescription("**It appears that the post or the subreddit are NSFW. Please click on the post link to see this content.**")
+        postMessage.edit({ embeds: [embed]})
+        return
+      }
 
-        if (extension.includes(await post.url.slice(-4))) {
-          embed.setImage(await post.url)
-        } else {
-          embed.setDescription(`**[${await postTitle.toUpperCase()}]\(https://reddit.com/r/memes/comments/${await post.id}/${await postTitle.replace(/ /g, "_").replace(/"/g, "").replace(/\*/g, "")})**\n\n${await post.selftext}`)
-        }
+      const embed = new Discord.MessageEmbed()
+          .setColor("#ff4301")
+          .setAuthor({ name: `r/${post.subreddit} | u/${post.author}`, iconURL: subreddit.icon_img})
+          .setTitle(post.title)
+          .setURL(`https://www.reddit.com/comments/${post.id}`)
+          .setFooter({ text: `👍 ${post.ups} | 💬 ${post.num_comments}`})
 
-        postMessage.edit({embeds : [embed]})
-      })
-    }
+      if (post.post_hint === "image") {
+        embed.setImage(post.url)
+      } else if (post.selftext !== "") {
+        embed.setDescription(post.selftext)
+      } else if (post.media !== null) {
+        embed.setDescription("**Sorry, it seems that this post contains a video.\n The Reddit commands on MeDaBot sadly do not have video support.\n\nFormats we support include: text, image, and gif.**")
+      } 
 
-    try {
-      scrapeSubreddit()
-    } catch (error) {
-      console.log("<Error>\n" + error)
-    }
+      postMessage.edit({ embeds: [embed]})
+    })
   }
 }
