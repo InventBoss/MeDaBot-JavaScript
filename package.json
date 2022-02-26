@@ -2,16 +2,33 @@
   "scripts": {
     "start": "node index.js"
   },
-  "engines": {
-    "node": "16.x"
-  },
   "dependencies": {
+    "node": "16.x",
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.23.1",
-    "discord.js": "^13.1.0",
+    "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
+    "node-fetch": "^3.2.0",
     "random-anime": "^1.0.6"
-  }
+  },
+  "name": "MeDaBot-JavaScript",
+  "description": "Hello, it seems you have found my Discord chatbot, **MeDaBot**.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "node": "^16.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InventBoss/MeDaBot-JavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InventBoss/MeDaBot-JavaScript/issues"
+  },
+  "homepage": "https://github.com/InventBoss/MeDaBot-JavaScript#readme"
 }

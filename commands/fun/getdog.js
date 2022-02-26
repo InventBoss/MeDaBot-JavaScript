@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const fetch = require("node-fetch")
+const fetch = import("node-fetch")
 
 module.exports = {
   name: "getdog",

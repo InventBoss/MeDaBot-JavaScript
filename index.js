@@ -2,22 +2,20 @@ const fs = require("fs");
 const stayAlive = require("./stayalive.js");
 const Discord = require("discord.js");
 const config = require("./config.json");
-require("dotenv").config();
 
-const testMode = true
-
-let chosen_token = null
-
-if (testMode) {
-  chosen_token = process.env["TEST_TOKEN"]
-} else {
-  chosen_token = process.env["TOKEN"]
-}
+const testMode = false
 
 const reddit = "test"
 
-function startBot() {
-  client.login(chosen_token);
+async function startBot() {  
+  if (testMode) {
+    const token = `${process.env.TEST_TOKEN}`
+    client.login(token)
+  } else {
+    const token = `${process.env.TOKEN}`
+    client.login(token)
+  }
+  
 }
 
 let prefix = config.prefix;
@@ -161,5 +159,5 @@ client.on("messageCreate", message => {
   }
 });
 
-stayAlive();
+stayAlive()
 startBot();
