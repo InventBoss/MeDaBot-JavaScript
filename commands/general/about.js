@@ -1,33 +1,32 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
+const commandExtra = require("../../extra/command");
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const fetch = require("node-fetch")
 
 module.exports = {
-  name: "about",
-  aliases:["aboutmedabot"],
-  execute(message) {
-    const row = new Discord.MessageActionRow().addComponents(
-      new Discord.MessageButton()
-        .setLabel("Top.gg")
-        .setStyle("LINK")
-        .setURL("https://top.gg/bot/763313827944202250"),
-      new Discord.MessageButton()
-        .setLabel("Twitter")
-        .setStyle("LINK")
-        .setURL("https://twitter.com/Invent_Boss"),
-      new Discord.MessageButton()
-        .setLabel("Github")
-        .setStyle("LINK")
-        .setURL("https://github.com/InventBoss/MeDaBot-JavaScript"),
-      new Discord.MessageButton()
-        .setLabel("Invite")
-        .setStyle("LINK")
-        .setURL("https://discord.com/api/oauth2/authorize?client_id=763313827944202250&permissions=1073866944&scope=bot%20applications.commands")
-    )
+    name: "about",
+    longDesc:
+        "Do you want to learn about me? How about my author? Well you can do that here.",
+    slashData: new SlashCommandBuilder()
+        .setName("about")
+        .setDescription("Do you want to learn about me? How about my author? Well you can do that here."),        
+    execute: async (isSlash, context) => {
+        const row = new Discord.MessageActionRow().addComponents(
+            new Discord.MessageButton()
+                .setLabel("Twitter")
+                .setStyle("LINK")
+                .setURL("https://twitter.com/Invent_Boss"),
+            new Discord.MessageButton()
+                .setLabel("Github")
+                .setStyle("LINK")
+                .setURL("https://github.com/InventBoss/MeDaBot-JavaScript")
+        );
 
-    const embed = new Discord.MessageEmbed()
-      .setColor("#008080")
-      .setTitle("**About MeDaBot :scroll:**")
-      .addField("Description", "This is a discord bot created by InventBoss to advance his coding skills.")
-      .addField("Creator", "InventBoss, the creator of MeDaBot, is a loser who co-owns [Nexus](https://discord.gg/YCK2TZbT69).\n\nYou can support him by giving him nitro via. [Nexus](https://discord.gg/YCK2TZbT69) or by donating to him on Hypixel Skyblock while he is online.")
-    message.channel.send({embeds : [embed], components : [row]})
-  }
-}
+        const embed = new Discord.MessageEmbed()
+          .addField("About MeDaBot", "MeDaBot is a general purpose/meme related discord bot created by InventBoss. The project started in a single python and has moved up into a mutli-file Node.js project.")
+          .addField("About InventBoss", "InventBoss is a french programmer who created MeDaBot. He's created many other projects such as [Futurez.net](https://futurez.net), many private discord bots, and more.")
+          .setColor("#fc4e03")
+          
+        commandExtra.sendMessage(isSlash, context, {embeds : [embed], components: [row]})      
+    },
+};

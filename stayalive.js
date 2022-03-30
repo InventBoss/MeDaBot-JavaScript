@@ -1,9 +1,9 @@
-const express = require("express")
+const express = require("express");
 
-const server = express()
+const server = express();
 
 server.all("/", (req, res) => {
-  res.send(`Well, you can tell by the way I use my walk
+    res.send(`Well, you can tell by the way I use my walk
     I'm a woman's man, no time to talk
     Music loud and women warm, I've been kicked around
     Since I was born
@@ -64,11 +64,11 @@ server.all("/", (req, res) => {
     Life goin' nowhere, somebody help me
     Somebody help me, yeah (ohh)
     Life goin' nowhere, somebody help me, yeah
-    I'm stayin' alive`)
-})
+    I'm stayin' alive`);
+});
 
 function stayAlive() {
-  server.listen(3000)
+    server.listen(3000);
 }
 
-module.exports = stayAlive
+module.exports = stayAlive;
